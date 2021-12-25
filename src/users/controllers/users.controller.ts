@@ -18,7 +18,6 @@ export class UsersController {
     return this.usersService.createUser(userDto);
   }
 
-
   @ApiOperation({summary: 'Получить всех пользователей'})
   @ApiResponse({status: 200, type: [User]})
   @Get()
