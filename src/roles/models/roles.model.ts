@@ -24,7 +24,7 @@ export class Role extends Model<Role, RoleCreationAttributes > {
   value: string;
 
   @ApiProperty({example: 'Администратор', description: 'Описание конкретной роли'})
-  @Column({type: DataType.STRING, allowNull: false})
+  @Column({type: DataType.STRING, allowNull: true})
   description: string;
 
   @BelongsToMany(() => User, () => UserRoles)
