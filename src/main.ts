@@ -9,7 +9,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('NestJS Test Backend Application')
     .setDescription('Документация REST API')
-    .setVersion('0.0.1')
+    .setVersion('1.0.0')
     .addTag('NestJS')
     .build();
   const document = SwaggerModule.createDocument(app, config);
