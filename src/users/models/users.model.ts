@@ -9,7 +9,7 @@ interface UserCreationAttributes {
 }
 
 @Table({tableName: 'Users'})
-export class User extends Model<User, UserCreationAttributes > {
+export class User extends Model<User, UserCreationAttributes> {
   @ApiProperty({example: 'integer', description: 'Уникальный ID пользователя'})
   @Column({
     type: DataType.INTEGER,
@@ -27,7 +27,7 @@ export class User extends Model<User, UserCreationAttributes > {
   @Column({type: DataType.STRING, allowNull: false})
   password: string;
 
-  @ApiProperty({example: 'bool', description: 'Флаг бана (забанен пользователь или нет)'})
+  @ApiProperty({example: 'bool', description: 'Флаг бана (заблокирован пользователь или нет)'})
   @Column({type: DataType.BOOLEAN, defaultValue: false})
   banned: boolean;
 
