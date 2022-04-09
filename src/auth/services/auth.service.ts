@@ -11,6 +11,11 @@ export class AuthService {
               private jwtService: JwtService ) {
   }
 
+  /**
+   * Метод для входа в систему
+   *
+   * @param userDto
+   */
   async signIn(userDto: CreateUserDto) {
     const user = await this.validateUser(userDto);
     return this.generateToken(user);
@@ -31,6 +36,12 @@ export class AuthService {
     return this.generateToken(user);
   }
 
+  /**
+   * Метод для генерации токена
+   *
+   * @param user
+   * @private
+   */
   private async generateToken(user: User) {
     const payload = {
       email: user.email,
