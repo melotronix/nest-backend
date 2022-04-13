@@ -1,7 +1,8 @@
-import { Body, Controller, Post, UploadedFile } from '@nestjs/common';
+import { Body, Controller, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CreatePostDto } from '../dto/create-post.dto';
 import { PostsService } from '../services/posts.service';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('posts')
 @ApiTags('Посты')
@@ -11,9 +12,10 @@ export class PostsController {
   }
 
   @Post()
+  @UseInterceptors(FileInterceptor('image'))
   cretePost(@Body() dto: CreatePostDto,
             @UploadedFile() image) {
-    this.postService.createPost(dto, image);
+    return this.postService.createPost(dto, image);
   }
 
 }
