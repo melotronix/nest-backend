@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards, UsePipes } from '@nestjs/common';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { UsersService } from '../services/users.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
@@ -7,6 +7,7 @@ import { RolesAuth } from '../../auth/decorators/roles-auth.decorator';
 import { RolesGuard } from '../../auth/guards/roles.guard';
 import { AssignRoleDto } from '../dto/assign-role.dto';
 import { BanUserDto } from '../dto/ban-user.dto';
+import { ValidationPipe } from '../../pipes/validation.pipe';
 
 @ApiTags('Пользователи')
 @Controller('users')
@@ -22,8 +23,9 @@ export class UsersController {
    */
   @ApiOperation({summary: 'Создать пользователя'})
   @ApiResponse({status: 200, type: User})
+  @UsePipes(ValidationPipe)
   @Post()
-  create(@Body() userDto: CreateUserDto) {
+  createUser(@Body() userDto: CreateUserDto) {
     return this.usersService.createUser(userDto);
   }
 
