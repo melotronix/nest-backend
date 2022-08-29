@@ -33,7 +33,7 @@ export class UsersController {
    * Получить список всех пользователей
    *
    */
-  @ApiOperation({summary: 'Получить всех пользователей'})
+  @ApiOperation({summary: 'Получить список всех пользователей'})
   @ApiResponse({status: 200, type: [User]})
   @RolesAuth('ADMIN')
   @UseGuards(RolesGuard)
